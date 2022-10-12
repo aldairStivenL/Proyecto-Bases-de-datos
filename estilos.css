@@ -1,0 +1,62 @@
+.btn-wsp{
+    position:fixed;
+    width:60px;
+    height:60px;
+    line-height: 63px;
+    bottom:25px;
+    right:25px;
+    background:#25d366;
+    color:#FFF;
+    border-radius:50px;
+    text-align:center;
+    font-size:35px;
+    box-shadow: 0px 1px 10px rgba(0,0,0,0.3);
+    z-index:100;
+    transition: all 300ms ease;
+}
+.btn-wsp:hover{
+    text-decoration: none;
+    color: #0df053;
+    /*background: #20ba5a;*/
+    background:#FFF ;
+}
+@media only screen and (min-width:320px) and (max-width:768px){
+    .btn-wsp{
+        width:63px;
+        height:63px;
+        line-height: 66px;
+	}
+}
+
+
+.footer {
+    background-color: #ffffff;
+    padding: 1em 1em;
+    text-align: center;
+    position : fixed;
+    bottom: 0;
+    width: 100%;
+ 
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
