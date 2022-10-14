@@ -113,47 +113,44 @@ if (isset($_POST['submit']))
 }
 
 //hasta aqui-----------------------------------------------
-/*
-$identificacion=$_POST['id'];
-$primernombre=$_POST['nombre1'];
-$segundonombre=$_POST['nombre2']; eto si esta bien aqui puesto esto ya estaba
-$primerapellido=$_POST['apellido1'];
-$segundoapellido=$_POST['apellido2'];
-$correoelectronico=$_POST['correo'];*/
+
 
 if( $error == false)
 {
     include("conexion.php");
-    $con=conectar();
-    #$sql="INSERT INTO usuario VALUES ('$identificacion','$primernombre','$segundonombre','$primerapellido','$segundoapellido','$correoelectronico',2)";
-    $sql="INSERT INTO usuario (id,nombre1,nombre2,apellido1,apellido2,correo,id_cargo,id_arriendo) VALUES ('$identificacion','$primernombre','$segundonombre','$primerapellido','$segundoapellido','$correoelectronico',2,3)";
+    $con=conectar(); 
+    #$id_arriendo=$row['id'];
+    #echo $identificacion_arriendo['id'];
+    #$sql="INSERT INTO usuario (id,nombre1,nombre2,apellido1,apellido2,correo,id_cargo) VALUES ('$identificacion','$primernombre','$segundonombre','$primerapellido','$segundoapellido','$correoelectronico',2)";
+    $sql="INSERT INTO tabla_arrendamiento (mes_inicio_arrinedo,mes_fin_arriendo,saldo_a_pagar_mensual,meses_atraso) VALUES ('$mes_inicio_arriendo','$mes_fin_arriendo','$saldo_mensual','$meses_de_atraso')";
     $query=mysqli_query($con,$sql);
+    #$row=mysqli_fetch_array($query)
+    #$id_arriendo=$row['id_arriendo'];
+ 
+    $id_arriendo="SELECT * FROM tabla_arrendamiento WHERE id=(SELECT max(id) FROM tabla_arrendamiento)"; 
+    
+    $identificacion_arriendo=mysqli_query($con,$id_arriendo);
+    while($row=mysqli_fetch_array($identificacion_arriendo)){
+        #echo $row['id'];
+        $jumID=$row['id'];
+    }
+    
+                                    
 
-    #$sql2="INSERT INTO tabla_arrendamiento VALUES ('$identificacion','$mes_inicio_arriendo','$mes_fin_arriendo','$saldo_mensual','$meses_de_atraso')";
-    #$query= mysqli_query($con, $sql);
-    #$query2= mysqli_query($con, $sql2);
-    #echo "$identificacion, $primernombre, $segundonombre, $primerapellido, $segundoapellido, $correoelectronico, $mes_inicio_arriendo, $mes_fin_arriendo, $saldo_mensual, $meses_de_atraso";
+
     if($query){
         echo "se inserto correctamente la primera tabla";
-        $sql="INSERT INTO tabla_arrendamiento (id,mes_inicio_arrinedo,mes_fin_arriendo,saldo_a_pagar_mensual,meses_atraso) VALUES (3,'$mes_inicio_arriendo','$mes_fin_arriendo','$saldo_mensual','$meses_de_atraso')";
-        $query= mysqli_query($con, $sql);
+       # $sql="INSERT INTO tabla_arrendamiento (mes_inicio_arrinedo,mes_fin_arriendo,saldo_a_pagar_mensual,meses_atraso) VALUES ('$mes_inicio_arriendo','$mes_fin_arriendo','$saldo_mensual','$meses_de_atraso')";
+       
+       $sql="INSERT INTO usuario (id,nombre1,nombre2,apellido1,apellido2,correo,id_cargo,id_arriendo) VALUES ('$identificacion','$primernombre','$segundonombre','$primerapellido','$segundoapellido','$correoelectronico',2,'$jumID')";
+       $query= mysqli_query($con, $sql);
 
         if($query){
             echo "se inserto correctamente la segunda tabla";
         }else{
             echo "no se inserto correctamente la segunda tabla";
         }
-        #Header("Location: usuario.php");
-        
-        #$query2= mysqli_query($con, $sql2);
-       # if($query2){
-           # echo "\n";
-         #   echo "se inserto correctamente en ambas tablas";
-      #  }else{
-           # echo "\n";
-       #     echo "no se inserto en la tabla clinete";
-      #  }
-        
+        Header("Location: usuario.php");
     }else{
             echo "no se inserto en ni en la primera tabla";
     }

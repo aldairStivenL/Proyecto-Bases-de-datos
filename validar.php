@@ -23,7 +23,7 @@
             header("location:usuario.php");
         }
         if($filas['id_cargo']==2){
-            header("location:cliente.php");
+            header("location:cliente.php?id=$contraseña");
         } 
     }
     
