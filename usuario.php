@@ -6,7 +6,8 @@
     include("conexion.php");
     $con=conectar();
 
-    $sql="SELECT * FROM usuario";   #`usuario`
+    #$sql="SELECT * FROM usuario";   #`usuario`
+    $sql="SELECT * FROM tabla_arrendamiento JOIN usuario ON usuario.id_arriendo=tabla_arrendamiento.id ORDER BY tabla_arrendamiento.id ";
     $query=mysqli_query($con,$sql);
 
     #$row=mysqli_fetch_array($query);

@@ -26,7 +26,7 @@ $row=mysqli_fetch_array($query);
                  <div class="container mt-5">
                     <form action="update.php" method="POST">
                     
-                                <input type="hidden" name="id" value="<?php echo $row['id']  ?>">
+                            <input type="hidden" name="id" value="<?php echo $row['id']  ?>">
                                 
                                 <input type="text" class="form-control mb-3" name="nombre1" placeholder="Nombre1" value="<?php echo $row['nombre1']  ?>">
                                 <input type="text" class="form-control mb-3" name="nombre2" placeholder="Nombre2" value="<?php echo $row['nombre2']  ?>">

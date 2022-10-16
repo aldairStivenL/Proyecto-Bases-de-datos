@@ -4,7 +4,7 @@ include("conexion.php");
 $con=conectar();
 
 $id=$_GET['id'];  #obtiene el id que es lo que recibe el boton de donde doy clic osea la info de el lugar donde doy click
-
+echo "este es el id que recibo de la pagina de usuario.php: ".$id;
 
 #$sql="DELETE tabla_arrendamiento.* from tabla_arrendamiento join usuario on usuario.id_arriendo=tabla_arrendamiento.id WHERE usuario.id='$identificacion'";
 $sql="SELECT  tabla_arrendamiento.* FROM tabla_arrendamiento join usuario on usuario.id_arriendo=tabla_arrendamiento.id WHERE usuario.id='$id'";

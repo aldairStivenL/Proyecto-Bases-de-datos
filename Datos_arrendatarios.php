@@ -7,7 +7,7 @@
    # $sql="SELECT * FROM tabla_arrendamiento";   #`usuario`
    
     #$sql="DELETE tabla_arrendamiento.* from tabla_arrendamiento join usuario on usuario.id_arriendo=tabla_arrendamiento.id WHERE usuario.id='$identificacion'";
-    $sql="SELECT * FROM tabla_arrendamiento JOIN usuario ON usuario.id_arriendo=tabla_arrendamiento.id";
+    $sql="SELECT * FROM tabla_arrendamiento JOIN usuario ON usuario.id_arriendo=tabla_arrendamiento.id ORDER BY tabla_arrendamiento.id ";
     $query=mysqli_query($con,$sql);
 
     #$sql2="SELECT * FROM usuario";   #`usuario`
@@ -63,7 +63,7 @@
                                         
                                             <!--botones para editar o eliinar lo que es datos-->
                                             <th><a href="actualizar_data_arriendo.php?id=<?php echo $row['id']?>"class="btn btn-info">Editar</a></th>
-                                            <th><a href="delete.php?id=<?php echo $row['id']?>"class="btn btn-danger">Eliminar</a></th>
+                                            <th><a href="delete_datos_arriendo.php?id=<?php echo $row['id']?>"class="btn btn-danger">Eliminar</a></th>
                                         </tr>
                                     <?php
                                         }

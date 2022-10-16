@@ -98,7 +98,7 @@ if (isset($_POST['submit']))
     }else
         $errores["saldo_a_pagar_mensual"]="";
 
-   /* if(empty($meses_de_atraso))
+  /*  if (empty($meses_de_atraso))
     {
         $errores["meses_atrasados"]= " Meses atrasados No Valido. ";
         $error=True;
@@ -119,41 +119,56 @@ if( $error == false)
 {
     include("conexion.php");
     $con=conectar(); 
-    #$id_arriendo=$row['id'];
-    #echo $identificacion_arriendo['id'];
-    #$sql="INSERT INTO usuario (id,nombre1,nombre2,apellido1,apellido2,correo,id_cargo) VALUES ('$identificacion','$primernombre','$segundonombre','$primerapellido','$segundoapellido','$correoelectronico',2)";
-    $sql="INSERT INTO tabla_arrendamiento (mes_inicio_arrinedo,mes_fin_arriendo,saldo_a_pagar_mensual,meses_atraso) VALUES ('$mes_inicio_arriendo','$mes_fin_arriendo','$saldo_mensual','$meses_de_atraso')";
+
+    $sql="SELECT * FROM usuario WHERE id='$identificacion'";
     $query=mysqli_query($con,$sql);
-    #$row=mysqli_fetch_array($query)
-    #$id_arriendo=$row['id_arriendo'];
- 
-    $id_arriendo="SELECT * FROM tabla_arrendamiento WHERE id=(SELECT max(id) FROM tabla_arrendamiento)"; 
     
-    $identificacion_arriendo=mysqli_query($con,$id_arriendo);
-    while($row=mysqli_fetch_array($identificacion_arriendo)){
-        #echo $row['id'];
-        $jumID=$row['id'];
-    }
+
+    if(mysqli_num_rows($query)==0)
+    {
+        #$id_arriendo=$row['id'];
+        #echo $identificacion_arriendo['id'];
+        #$sql="INSERT INTO usuario (id,nombre1,nombre2,apellido1,apellido2,correo,id_cargo) VALUES ('$identificacion','$primernombre','$segundonombre','$primerapellido','$segundoapellido','$correoelectronico',2)";
+        $sql="INSERT INTO tabla_arrendamiento (mes_inicio_arrinedo,mes_fin_arriendo,saldo_a_pagar_mensual,meses_atraso) VALUES ('$mes_inicio_arriendo','$mes_fin_arriendo','$saldo_mensual','$meses_de_atraso')";
+        $query=mysqli_query($con,$sql);
+        #$row=mysqli_fetch_array($query)
+        #$id_arriendo=$row['id_arriendo'];
     
-                                    
+        $id_arriendo="SELECT * FROM tabla_arrendamiento WHERE id=(SELECT max(id) FROM tabla_arrendamiento)"; 
+        
+        $identificacion_arriendo=mysqli_query($con,$id_arriendo);
+        while($row=mysqli_fetch_array($identificacion_arriendo)){
+            #echo $row['id'];
+            $jumID=$row['id'];
+        }
+        
+                                        
 
-
-    if($query){
-        echo "se inserto correctamente la primera tabla";
-       # $sql="INSERT INTO tabla_arrendamiento (mes_inicio_arrinedo,mes_fin_arriendo,saldo_a_pagar_mensual,meses_atraso) VALUES ('$mes_inicio_arriendo','$mes_fin_arriendo','$saldo_mensual','$meses_de_atraso')";
-       
-       $sql="INSERT INTO usuario (id,nombre1,nombre2,apellido1,apellido2,correo,id_cargo,id_arriendo) VALUES ('$identificacion','$primernombre','$segundonombre','$primerapellido','$segundoapellido','$correoelectronico',2,'$jumID')";
-       $query= mysqli_query($con, $sql);
 
         if($query){
-            echo "se inserto correctamente la segunda tabla";
+            echo "se inserto correctamente la primera tabla";
+        # $sql="INSERT INTO tabla_arrendamiento (mes_inicio_arrinedo,mes_fin_arriendo,saldo_a_pagar_mensual,meses_atraso) VALUES ('$mes_inicio_arriendo','$mes_fin_arriendo','$saldo_mensual','$meses_de_atraso')";
+        
+        $sql="INSERT INTO usuario (id,nombre1,nombre2,apellido1,apellido2,correo,id_cargo,id_arriendo) VALUES ('$identificacion','$primernombre','$segundonombre','$primerapellido','$segundoapellido','$correoelectronico',2,'$jumID')";
+        $query= mysqli_query($con, $sql);
+
+            if($query){
+                echo "se inserto correctamente la segunda tabla";
+            }else{
+                echo "no se inserto correctamente la segunda tabla";
+            }
+            Header("Location: usuario.php");
         }else{
-            echo "no se inserto correctamente la segunda tabla";
+                echo "ingrese porfavor la cantidad de meses de atraso";
         }
-        Header("Location: usuario.php");
+
     }else{
-            echo "no se inserto en ni en la primera tabla";
+        
+            echo ("<P><center><b>No se pudo insertar informacion.  
+             El documento de esa persona ya esta registrado.</P></center><b> 
+            <P><center><b>( Al hacer una nueva insercion Recuerde que solo podra omitir el segundo nombre y segundo apellido)</b><br><A HREF=usuario.php>Volver</A></center></P>");
     }
+
 }else{
     echo ("<P><center><b>No se pudo insertar informacion 
                         porfavor recuerde ingresar valores.</P></center><b> 
