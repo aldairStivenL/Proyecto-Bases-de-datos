@@ -5,12 +5,8 @@
 <?php
     include("conexion.php");
     $con=conectar();
-
-    #$sql="SELECT * FROM usuario";   #`usuario`
     $sql="SELECT * FROM tabla_arrendamiento JOIN usuario ON usuario.id_arriendo=tabla_arrendamiento.id ORDER BY tabla_arrendamiento.id ";
     $query=mysqli_query($con,$sql);
-
-    #$row=mysqli_fetch_array($query);
 
     ?>
 <!--
@@ -36,7 +32,7 @@
                         <h1>Ingrese Datos</h1>
                         <!--esta parte lo que hace es llevar a la pagina insertar el class, el primer name es tal cual como se halla la columna de la base de datos 
                         usuario.
-                        el segundo name coloca como una marca de agua mientras el campo esta vacio para indicar que debe collocarse-->
+                        el segundo name coloca como una marca de agua mientras el campo esta vacio para indicar que debe colocarse-->
                         <form action="insertar.php" method="POST">
                             <input type="text" class="form-control mb-3" name="id" placeholder="identificacion usuario">
                             <input type="text" class="form-control mb-3" name="nombre1" placeholder="primer nombre">

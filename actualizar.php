@@ -1,14 +1,14 @@
 <?php
 
-include("conexion.php");
-$con=conectar();
+    include("conexion.php");
+    $con=conectar();
 
-$id=$_GET['id'];  #obtiene el id que es lo que recibe el boton de donde doy clic osea la info de el lugar donde doy click
+    $id=$_GET['id'];  #obtiene el id que es lo que recibe el boton de donde doy clic osea la info de el lugar donde doy click
 
-$sql="SELECT * FROM usuario WHERE id ='$id'";
-$query=mysqli_query($con, $sql);
+    $sql="SELECT * FROM usuario WHERE id ='$id'";
+    $query=mysqli_query($con, $sql);
 
-$row=mysqli_fetch_array($query);
+    $row=mysqli_fetch_array($query);
 ?>
 
 <!DOCTYPE html>

@@ -6,12 +6,9 @@
     include("conexion.php");
     $con=conectar();
 
-    $sql="SELECT * FROM clinete";   #`usuario`
+    $sql="SELECT * FROM clinete";  
     $query=mysqli_query($con,$sql);
-
-    #$row=mysqli_fetch_array($query);
-
-    ?>
+?>
 <!--
     html que me coloca los elemntos en pantalla, ademas de usar clases que permite dar mas estilo a tablas y encabezados
 -->
@@ -22,7 +19,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="css/style.css" rel="stylesheet">
-        <!--esta parte lo que hace es dadr mas estilos al aperte donde se hallan los dos elementos el de la izqioerda y derecha ue seria la tabla-->
+        <!--esta parte lo que hace es dar mas estilos al aperte donde se hallan los dos elementos el de la izqioerda y derecha ue seria la tabla-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
         
     </head>
@@ -33,9 +30,7 @@
 
                      <div class="col-md-8">
                      <h1>Datos de arriendo</h1>
-                     
-                     <!--<input type="button" name="volver" value="Ver mas informacion de clientes" onclick="window.location.href='inicioSesion.php'">-->
-                        <!--esto es para hacer la tabla y presentarla estilizada-->
+                    <!--esto es para hacer la tabla y presentarla estilizada-->
                         <table class="table">
                             <thead class="table-success table-striped">
                                 <tr>

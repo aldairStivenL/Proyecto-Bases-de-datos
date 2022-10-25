@@ -1,18 +1,9 @@
 <?php
-   # echo "aqui esta la demas informacion de los clientes";
     
     include("conexion.php");
     $con=conectar();
-
-   # $sql="SELECT * FROM tabla_arrendamiento";   #`usuario`
-   
-    #$sql="DELETE tabla_arrendamiento.* from tabla_arrendamiento join usuario on usuario.id_arriendo=tabla_arrendamiento.id WHERE usuario.id='$identificacion'";
     $sql="SELECT * FROM tabla_arrendamiento JOIN usuario ON usuario.id_arriendo=tabla_arrendamiento.id ORDER BY tabla_arrendamiento.id ";
     $query=mysqli_query($con,$sql);
-
-    #$sql2="SELECT * FROM usuario";   #`usuario`
-    #$query2=mysqli_query($con,$sql2);
-
 ?>
 
 <!DOCTYPE html>
